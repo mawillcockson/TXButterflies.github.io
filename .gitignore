@@ -1,2 +1,7 @@
+# Hugo
 generated_website/
 resources/
+
+# Editor
+Session.vim
+*.code-workspace
