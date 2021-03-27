@@ -2,16 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://texasbutterfliesmonitoring.org/</loc>
-  </url><url>
     <loc>https://texasbutterfliesmonitoring.org/about/</loc>
   </url><url>
     <loc>https://texasbutterfliesmonitoring.org/contact/</loc>
   </url><url>
-    <loc>https://texasbutterfliesmonitoring.org/faq/</loc>
-  </url><url>
-    <loc>https://texasbutterfliesmonitoring.org/newsletter/</loc>
+    <loc>https://texasbutterfliesmonitoring.org/</loc>
   </url><url>
     <loc>https://texasbutterfliesmonitoring.org/resources/</loc>
+  </url><url>
+    <loc>https://texasbutterfliesmonitoring.org/newsletter/</loc>
   </url>
 </urlset>
