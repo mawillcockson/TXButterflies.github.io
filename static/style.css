@@ -14,13 +14,17 @@ html, body {
     font-family: sans-serif;
 }
 
+li {
+    display: list-item;
+}
+
 body {
     height: 100vh;
     display: flex;
     flex-flow: column nowrap;
 }
 
-nav > ul {
+header > nav > ul {
     margin: 0;
     padding: 0;
     display: flex;
@@ -28,7 +32,7 @@ nav > ul {
     background-color: var(--banner-color);
 }
 
-nav > ul > li {
+header > nav > ul > li {
     margin: 0;
     padding: 0;
     border-right: inset 0.1em var(--nav-separator-color);
@@ -37,7 +41,7 @@ nav > ul > li {
     text-align: center;
 }
 
-nav a {
+header > nav a {
     font-size: var(--nav-font-size);
     padding: 1em 1em;
 }
@@ -84,23 +88,26 @@ footer {
     text-align: right;
 }
 
-@media screen and (max-width: 30em) {
-    nav > ul {
+/* NOTE: this breakpoint needs to adjust with the number of tabs in the header
+ * this will likely require javascript
+ */
+@media screen and (max-width: 40em) {
+    header > nav > ul {
         flex-flow: column nowrap;
     }
 
-    nav > ul > li {
+    header > nav > ul > li {
         border: 0 black;
         border-bottom: inset 0.1em var(--nav-separator-color);
         width: 100%;
     }
 
-    nav a {
+    header > nav a {
         width: 100%;
         text-align: left;
     }
 
-    nav > ul > li:last-child {
+    header > nav > ul > li:last-child {
         border: 0 black;
     }
 
@@ -147,10 +154,10 @@ picture > img {
     display: flex;
     justify-content: center;
     text-decoration: none;
+    --scale: 1.3;
 }
 
 button {
-    --scale: 1.3;
     font-size: calc(var(--scale) * 1em);
     padding: calc(1em / var(--scale));
     color: white;
@@ -163,6 +170,19 @@ button {
     border: 1px solid #2e6da4;
     vertical-align: middle;
     text-align: center;
+}
+
+p > .button {
+    display: inline-block;
+    --scale: 1;
+}
+
+@media screen and (max-width: 30em) {
+    p > .button {
+        --scale: 1.3;
+        margin-top: calc(1em / var(--scale));
+        display: flex;
+    }
 }
 
 .logo {
@@ -199,4 +219,8 @@ button {
         max-width: 100%;
         float: none;
     }
+}
+
+nav#TableOfContents > ol {
+    list-style: decimal inside;
 }
