@@ -13,4 +13,4 @@ publishDir = "generated_website"
 pathWarnings = true
 [markup]
   [markup.tableOfContents]
-    ordered = true
+    ordered = false
