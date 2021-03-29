@@ -460,3 +460,21 @@ nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li::before {
 nav#TableOfContents > ol > li > ol > li > ol > li > ol > li > ol {
     list-style-type: square;
 }
+
+:target {
+    position: relative;
+}
+
+:target::before {
+    content: '';
+    background-image: url("{{ "noun_Butterfly_1438108.svg" | relURL | safeURL }}");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 1em;
+    height: 1em;
+    position: absolute;
+    left: -1em;
+    top:50%;
+    transform: translateY(-50%);
+}
