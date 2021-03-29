@@ -7,7 +7,8 @@ disableFastRender = true
 baseURL = "http://localhost/preview"
 languageCode = "en-us"
 title = "Texas Butterfly Monitoring Network"
-copyright = """Copyright © 2021 Texas Butterfly Monitoring Network"""
+copyright = """Copyright © 2021 Texas Butterfly Monitoring Network  
+Butterfly icon by kareemov from the Noun Project"""
 disableKinds = [
     "taxonomy",
     "term",
