@@ -456,3 +456,8 @@ nav#TableOfContents > ol > li > ol > li > ol > li > ol > li > ol {
     top:50%;
     transform: translateY(-50%);
 }
+
+li:target {
+    /* prevent both butterfly icon and list style being shown overlapping */
+    list-style-type: none;
+}
