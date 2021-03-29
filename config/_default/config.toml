@@ -14,3 +14,5 @@ pathWarnings = true
 [markup]
   [markup.tableOfContents]
     ordered = false
+    startLevel = 2
+    endLevel = 6
