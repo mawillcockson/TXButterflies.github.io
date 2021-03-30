@@ -1,5 +1,9 @@
 # This is the default configuration
-baseURL = "https://texasbutterfliesmonitoring.org/"
+# It cascades to the other configurations
+verbose = true
+verboseLog = true
+minify = false
+baseURL = "http://localhost/preview"
 languageCode = "en-us"
 title = "Texas Butterfly Monitoring Network"
 copyright = """Copyright © 2021 Texas Butterfly Monitoring Network"""
