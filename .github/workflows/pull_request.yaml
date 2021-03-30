@@ -1,5 +1,5 @@
 ---
-# This is the renderer half of a workflow
+# This is the dispatch half of a workflow
 # For a brief explanation, see:
 # https://github.com/TXButterflies/TXButterflies.github.io/pull/8#issue-595042251
 #
@@ -8,7 +8,7 @@
 
 # This level of separation is necessary:
 # https://securitylab.github.com/research/github-actions-preventing-pwn-requests
-name: Render Pull Request
+name: Dispatch Pull Request
 on:
   # For a description, see:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target
