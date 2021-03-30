@@ -1,5 +1,5 @@
 {{ if not hugo.IsProduction -}}
-<p class="warning"><span class="warning-sign">This is a <u>preview</u>.{{ with site.Data.pull_request.pull_request.html_url }} <a href="{{ . | safeURL }}">This is the Pull Request that generated this preview.</a>{{ end }}</span></p>
+<p class="warning">This is a <u>preview</u>.{{ with site.Data.pull_request.pull_request.html_url }} <a href="{{ . | safeURL }}">This is the Pull Request that generated this preview.</a>{{ end }}</p>
 {{- end -}}
 <nav>
     <ul>

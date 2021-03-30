@@ -1,6 +1,7 @@
 :root {
     --main-color: white;
-    --warning-color: #eecc16;
+    --warning-background-color: #eecc16;
+    --warning-text-color: black;
     --warning-scale: 1.5;
 
     --banner-color-hue: 0;
@@ -407,67 +408,14 @@ nav#TableOfContents > ul > li > ul > li > ul {
 .warning {
     margin: 0;
     padding: calc(1em / var(--warning-scale));
-    color: black;
+    color: var(--warning-text-color);
     text-align: center;
-    background-color: var(--warning-color);
+    background-color: var(--warning-background-color);
     z-index: 1;
     font-size: calc(1em * var(--warning-scale));
 }
 
-.warning-sign {
-    position: relative;
+.warning::before {
+    /* hollow caution or warning sign */
+    content: '\26A0';
 }
-
-.warning-sign::before {
-    display: inline-block;
-    position: absolute;
-    left: -1.5em;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    content: '';
-    --border-width: 1em;
-    --right: calc(var(--border-width) / 2);
-    --left: calc(var(--border-width) / 2);
-    /* an upright equilateral triangle, split down the middle, forms two right
-     * triangles that share a second-longest edge (the height of the patent
-     * equilateral triangle), split the bottom edge of the parent triangle,
-     * taking half for each of their shortest sides, and have longest edges
-     * that coincide with the 2 of the equilateral's edges.
-     *
-     * a = the shortest side of the right triangle
-     * b =  the height of the equilateral triangle
-     * c = the longest edge of the right triangle
-     *
-     * each side of the equilateral triangle is 1, so:
-     * a = 1 / 2 = 0.5
-     * b = ?
-     * c = 1
-     *
-     * a^2 + b^2 = c^2
-     * (0.5)^2 + b^2 = (1)^2
-     * 0.25 + b^2 = 1
-     * b^2 = 1 - 0.25
-     * b = sqrt(0.75)
-     *
-     * So the height to width ratio is sqrt(0.75):1
-     */
-    --bottom: calc(0.86602540378 * var(--border-width));
-    border-right: var(--right) solid transparent;
-    border-left: var(--left) solid transparent;
-    border-bottom: var(--bottom) solid black;
-}
-
-.warning-sign::after {
-    display: inline-block;
-    position: absolute;
-    width: 0;
-    height: 0;
-    content: '!';
-    color: white;
-    left: -1.3em;
-    font-size: 90%;
-    top: 0.03em;
-}
-
