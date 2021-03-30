@@ -1,14 +1,14 @@
 ---
-# This workflow is meant to be hosted in two repositories:
-# - The dispatcher
-# - The renderer
+# This is the dispatch half of a workflow
+# For a brief explanation, see:
+# https://github.com/TXButterflies/TXButterflies.github.io/pull/8#issue-595042251
 #
-# The dispatcher runs the dispatch job on a pull_request event, and triggers
-# the renderer to run the render job, using information from the pull request.
+# The other half is at:
+# https://github.com/TXButterflies/pr.texasbutterfliesmonitoring.org/blob/main/.github/workflows/pull_request.yaml
 #
 # This level of separation is necessary:
 # https://securitylab.github.com/research/github-actions-preventing-pwn-requests
-name: Render Pull Request
+name: Dispatch Pull Request
 on:
   # For a description, see:
   # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#pull_request_target
@@ -17,19 +17,6 @@ on:
       - README.md
     branches:
       - main
-
-  workflow_dispatch:
-    inputs:
-      pull_request_id:
-        description: |
-          The number assigned to the pull request. See:
-          https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally
-        required: true
-      pull_request_event:
-        description: |
-          The whole event payload. See:
-          https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#webhook-payload-example-32
-        required: false
 
 jobs:
   dispatch:
