@@ -1,11 +1,11 @@
 ---
-# This is the renderer half of a workflow
-# For a brief explanation, see:
-# https://github.com/TXButterflies/TXButterflies.github.io/pull/8#issue-595042251
+# This workflow is meant to be hosted in two repositories:
+# - The dispatcher
+# - The renderer
 #
-# The other half is at:
-# https://github.com/TXButterflies/pr.texasbutterfliesmonitoring.org/blob/main/.github/workflows/pull_request.yaml
-
+# The dispatcher runs the dispatch job on a pull_request event, and triggers
+# the renderer to run the render job, using information from the pull request.
+#
 # This level of separation is necessary:
 # https://securitylab.github.com/research/github-actions-preventing-pwn-requests
 name: Render Pull Request
@@ -17,6 +17,19 @@ on:
       - README.md
     branches:
       - main
+
+  workflow_dispatch:
+    inputs:
+      pull_request_id:
+        description: |
+          The number assigned to the pull request. See:
+          https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/checking-out-pull-requests-locally#modifying-an-inactive-pull-request-locally
+        required: true
+      pull_request_event:
+        description: |
+          The whole event payload. See:
+          https://docs.github.com/en/developers/webhooks-and-events/webhook-events-and-payloads#webhook-payload-example-32
+        required: false
 
 jobs:
   dispatch:
@@ -39,6 +52,8 @@ jobs:
           # workflow_dispatch events in the rendering repository.
           PULL_REQUEST_USER: "${{ secrets.PULL_REQUEST_USER }}"
           PULL_REQUEST_TOKEN: "${{ secrets.PULL_REQUEST_TOKEN }}"
+          RENDER_REPOSITORY_OWNER: "${{ github.repository_owner }}"
+          RENDER_REPOSITORY_NAME: "pr.texasbutterfliesmonitoring.org"
         run: |
           set -eu
           cat "${GITHUB_EVENT_PATH}" \
@@ -51,13 +66,13 @@ jobs:
           }' \
               --arg github_ref "${GITHUB_REF}" \
               --arg pull_request_id "${PULL_REQUEST_ID}" \
-              | curl \
+          | curl \
               --request POST \
               --header "Accept: application/vnd.github.v3+json" \
               --user "${PULL_REQUEST_USER}:${PULL_REQUEST_TOKEN}" \
               --post301 --post302 --post303 \
               --data "@-" \
-              'https://api.github.com/repos/TXButterflies/pr.texasbutterfliesmonitoring.org/actions/workflows/pull_request.yaml/dispatches'
+              --url "https://api.github.com/repos/${RENDER_REPOSITORY_OWNER}/${RENDER_REPOSITORY_NAME}/actions/workflows/pull_request.yaml/dispatches"
 
       - name: Make Comment
         shell: bash
@@ -94,7 +109,6 @@ jobs:
                   --request POST \
                   --header "Accept: application/vnd.github.v3+json" \
                   --user "${COMMENT_USER}:${GITHUB_TOKEN}" \
-                  "${PULL_REQUEST_COMMENTS_URL}/comments" \
                   --data "@-" \
                   --url "${PULL_REQUEST_COMMENTS_URL}/comments"
 ...
