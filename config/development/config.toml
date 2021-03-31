@@ -1,6 +1,2 @@
 # This configuration is used when running:
 # hugo server
-verbose = true
-verboseLog = true
-minify = false
-baseURL = "http://localhost/preview"

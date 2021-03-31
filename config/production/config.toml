@@ -1,3 +1,4 @@
-verbose = true
-verboseLog = true
-minify = false
+# This is the configuration used when the command:
+# hugo
+# is run without setting an environment
+baseURL = "https://texasbutterfliesmonitoring.org/"

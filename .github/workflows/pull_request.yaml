@@ -5,7 +5,7 @@
 #
 # The other half is at:
 # https://github.com/TXButterflies/pr.texasbutterfliesmonitoring.org/blob/main/.github/workflows/pull_request.yaml
-#
+
 # This level of separation is necessary:
 # https://securitylab.github.com/research/github-actions-preventing-pwn-requests
 name: Dispatch Pull Request

@@ -1,5 +1,8 @@
 :root {
     --main-color: white;
+    --warning-background-color: #eecc16;
+    --warning-text-color: black;
+    --warning-scale: 1.5;
 
     --banner-color-hue: 0;
     --banner-color-saturation: 0%;
@@ -175,8 +178,8 @@ header > nav a {
     padding: 1em 1em;
 }
 
-header,
-header a,
+header > nav,
+header > nav a,
 footer,
 footer a {
     /* The text color has to be explicitly set on the a tags, because the
@@ -224,7 +227,7 @@ header li.current > a:active {
     color: var(--nav-text-current-active-color);
 }
 
-header a {
+header > nav a {
     text-decoration: none;
 }
 
@@ -400,4 +403,19 @@ nav#TableOfContents > ol > li > ol > li > ol {
 
 nav#TableOfContents > ul > li > ul > li > ul {
     list-style-type: square;
+}
+
+.warning {
+    margin: 0;
+    padding: calc(1em / var(--warning-scale));
+    color: var(--warning-text-color);
+    text-align: center;
+    background-color: var(--warning-background-color);
+    z-index: 1;
+    font-size: calc(1em * var(--warning-scale));
+}
+
+.warning::before {
+    /* hollow caution or warning sign */
+    content: '\26A0';
 }

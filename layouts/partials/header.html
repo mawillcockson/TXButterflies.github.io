@@ -1,3 +1,6 @@
+{{ if not hugo.IsProduction -}}
+<p class="warning">This is a <u>preview</u>.{{ with site.Data.pull_request.pull_request.html_url }} <a href="{{ . | safeURL }}">This is the Pull Request that generated this preview.</a>{{ end }}</p>
+{{- end -}}
 <nav>
     <ul>
         <li{{ if .IsHome }} class="current"{{ end }}><a href="{{ if .IsHome }}{{ safeURL `#` }}{{ else }}{{ .Site.Home.RelPermalink }}{{ end }}">{{ site.Home.Params.linktitle }}</a></li>
