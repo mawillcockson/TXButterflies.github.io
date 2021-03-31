@@ -48,12 +48,14 @@ jobs:
               "ref": $github_ref,
               "inputs": {
                   "pull_request_id": $pull_request_id,
-                  "pull_request_event": .,
+                  "pull_request_event": (. | @json),
               }
           }' \
               --arg github_ref "${GITHUB_REF}" \
               --arg pull_request_id "${PULL_REQUEST_ID}" \
           | curl \
+              --fail \
+              --fail-early \
               --request POST \
               --header "Accept: application/vnd.github.v3+json" \
               --user "${PULL_REQUEST_USER}:${PULL_REQUEST_TOKEN}" \
