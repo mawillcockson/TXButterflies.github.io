@@ -10,9 +10,7 @@ title = "Resources for Monitors"
 
 ## Live Q&A Sessions for New Monitors
 
-- Tue, Apr 6th 7:30 - 8:00 pm CDT  
-https://us04web.zoom.us/j/74793496694?pwd=aHF1YXg2M2ZIYnp4OHNzZjZEWGtUZz09  
-Meeting ID: 747 9349 6694
+None currently scheduled.  Request one if you need it.
 
 ## Optional Check In for Monitors and Scribes who have a route in Pollardbase
 
