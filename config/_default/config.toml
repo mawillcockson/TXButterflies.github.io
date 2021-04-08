@@ -3,6 +3,7 @@
 verbose = true
 verboseLog = true
 minify = false
+disableFastRender = true
 baseURL = "http://localhost/preview"
 languageCode = "en-us"
 title = "Texas Butterfly Monitoring Network"
