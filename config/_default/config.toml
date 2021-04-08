@@ -3,6 +3,7 @@
 verbose = true
 verboseLog = true
 minify = false
+disableFastRender = true
 baseURL = "http://localhost/preview"
 languageCode = "en-us"
 title = "Texas Butterfly Monitoring Network"
@@ -17,4 +18,6 @@ publishDir = "generated_website"
 pathWarnings = true
 [markup]
   [markup.tableOfContents]
-    ordered = true
+    ordered = false
+    startLevel = 2
+    endLevel = 6

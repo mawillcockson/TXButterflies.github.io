@@ -16,7 +16,7 @@ https://github.com/theNewDynamic/gohugo-theme-ananke/blob/ffd9d903c905afef43fc1e
     {{ hugo.Generator }}
     <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
     <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ "/style.css" | relURL | safeURL }}">
+    {{ partial "css.html" (dict "currentPage" . "source" "style.scss" "targetPath" "style.css") }}
     <link rel="shortcut icon" href="{{ "/favicon.ico" | relURL | safeURL }}" type="image/x-icon">
   </head>
 
