@@ -7,6 +7,7 @@
 
 ## Interested in Monitoring Texas Butterflies?
 
+
 {{< image alt="Gulf Fritillary" src="/Gulf Fritillary.jpg" side="right" >}}
 
 Butterfly monitoring is crucial to gauging the health of butterfly habitats,
