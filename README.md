@@ -15,7 +15,6 @@ This repository holds all the files for this website.
 
 ## Troubleshooting
 
-If no comment is added to the pull request, you may have opened the pull request against the main branch.  Close pull request and copy to the changes and redo changes against main branch.
+If no comment is added to the pull request, you may have opened the pull request against a branch other than the branch named `main`.  Close pull request and redo changes against main branch.
 
-If the link to the temporary website produces a 404 page, DO NOT commit the changes.  Wait about 5 min before admitting failure.
-
+If the link to the temporary website produces a 404 page, DO NOT commit the changes. It may take up to 5 minutes for the temporary website to be generated.
