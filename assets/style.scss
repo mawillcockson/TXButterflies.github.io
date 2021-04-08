@@ -422,6 +422,7 @@ nav#TableOfContents > ul > li > ul > li > ul {
 }
 
 nav#TableOfContents > ul > li > ul > li > ul > li > ul {
+    /* solid upright triangle */
     list-style-type: "\25B2";
 }
 
@@ -434,6 +435,7 @@ nav#TableOfContents > ol > li > ol > li > ol > li > ol {
 }
 
 nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul {
+    /* solid black diamond (square shape) */
     list-style-type: "\25C6";
 }
 
