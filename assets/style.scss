@@ -133,6 +133,7 @@
 
     --nav-font-size: 1.1em;
     --footer-font-size: 0.8em;
+    --custom-list-item-margin: 0.5em;
 
     /* NOTE: not able to be used anywhere, just a reminder as the the
      * breakpoint for layout changes
@@ -402,6 +403,30 @@ nav#TableOfContents > ol > li > ol > li > ol {
 }
 
 nav#TableOfContents > ul > li > ul > li > ul {
+    list-style-type: square;
+}
+
+nav#TableOfContents > ul > li > ul > li > ul > li > ul {
+    list-style-type: "\25B2";
+}
+
+nav#TableOfContents > ul > li > ul > li > ul > li > ul > li::before {
+    margin-left: var(--custom-list-item-margin);
+}
+
+nav#TableOfContents > ol > li > ol > li > ol > li > ol {
+    list-style-type: circle;
+}
+
+nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul {
+    list-style-type: "\25C6";
+}
+
+nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li::before {
+    margin-left: var(--custom-list-item-margin);
+}
+
+nav#TableOfContents > ol > li > ol > li > ol > li > ol > li > ol {
     list-style-type: square;
 }
 

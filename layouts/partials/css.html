@@ -1,0 +1,15 @@
+{{- if .Hugo.Environment | eq "production" -}}
+  {{- .Scratch.Set "outputStyle" "false" -}}
+  {{- .Scratch.Set "outputStyle" "compressed" -}}
+{{- else -}}
+  {{- .Scratch.Set "enableSourceMap" "true" -}}
+  {{- .Scratch.Set "outputStyle" "expanded" -}}
+{{- end -}}
+{{- $enableSourceMap := .Scratch.Get "enableSourceMap" -}}
+{{- $outputStyle := .Scratch.Get "outputStyle" -}}
+{{- $currentPage := .currentPage -}}
+{{- $source := .source -}}
+{{- $targetPath := .targetPath -}}
+{{- $sassOptions := dict "outputStyle" $outputStyle "enableSourceMap" $enableSourceMap "targetPath" $targetPath -}}
+{{- $sass := resources.Get $source | resources.ExecuteAsTemplate $targetPath $currentPage | resources.ToCSS | resources.Fingerprint "sha512" -}}
+<link rel="stylesheet" href="{{- $sass.RelPermalink | safeURL -}}" {{ printf `integrity="%s"` $sass.Data.Integrity | safeHTMLAttr -}}>

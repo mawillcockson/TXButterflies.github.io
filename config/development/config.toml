@@ -1,2 +1,3 @@
 # This configuration is used when running:
 # hugo server
+disableFastRender = true
