@@ -139,6 +139,19 @@ body {
   display: flex;
   flex-flow: column nowrap; }
 
+.warning {
+  margin: 0;
+  padding: calc(1em / var(--warning-scale));
+  color: var(--warning-text-color);
+  text-align: center;
+  background-color: var(--warning-background-color);
+  z-index: 1;
+  font-size: calc(1em * var(--warning-scale)); }
+
+.warning::before {
+  /* hollow caution or warning sign */
+  content: '\26A0'; }
+
 header > nav > ul {
   margin: 0;
   padding: 0;
@@ -339,6 +352,7 @@ nav#TableOfContents > ul > li > ul > li > ul {
   list-style-type: square; }
 
 nav#TableOfContents > ul > li > ul > li > ul > li > ul {
+  /* solid upright triangle */
   list-style-type: "\25B2"; }
 
 nav#TableOfContents > ul > li > ul > li > ul > li > ul > li::before {
@@ -348,6 +362,7 @@ nav#TableOfContents > ol > li > ol > li > ol > li > ol {
   list-style-type: circle; }
 
 nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul {
+  /* solid black diamond (square shape) */
   list-style-type: "\25C6"; }
 
 nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li::before {
@@ -355,16 +370,3 @@ nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li::before {
 
 nav#TableOfContents > ol > li > ol > li > ol > li > ol > li > ol {
   list-style-type: square; }
-
-.warning {
-  margin: 0;
-  padding: calc(1em / var(--warning-scale));
-  color: var(--warning-text-color);
-  text-align: center;
-  background-color: var(--warning-background-color);
-  z-index: 1;
-  font-size: calc(1em * var(--warning-scale)); }
-
-.warning::before {
-  /* hollow caution or warning sign */
-  content: '\26A0'; }
