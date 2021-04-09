@@ -1,0 +1,56 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "preview (hugo serve)",
+            "type": "process",
+            "command": "hugo",
+            "args": [
+                "serve",
+                "--bind", "0.0.0.0",
+                "--port", "1313",
+                "--source", "${workspaceFolder}"
+            ],
+            "detail": "Generate a live preview of the website",
+            "echoCommand": true,
+            "isBackground": true,
+            "isBuildCommand": true,
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": false,
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false
+            },
+            "runOptions": {
+                "instanceLimit": 1,
+                "runOn": "folderOpen"
+            },
+            "suppressTaskName": true,
+            "problemMatcher": {
+                "owner": "external",
+                "applyTo": "allDocuments",
+                "fileLocation": "autoDetect",
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "Change detected"
+
+                },
+                "pattern": {
+                    "kind": "location",
+                    "regexp": "^\\s*?([A-Z]+)\\s+.*?\"((.*):(\\d+):(\\d+))\":\\s+(.*)$",
+                    "severity": 1,
+                    "file": 3,
+                    "line": 4,
+                    "column": 5,
+                    "message": 6
+                }
+            }
+        }
+    ]
+}
