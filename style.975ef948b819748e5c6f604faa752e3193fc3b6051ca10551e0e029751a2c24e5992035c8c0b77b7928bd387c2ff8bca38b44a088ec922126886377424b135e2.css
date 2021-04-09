@@ -381,10 +381,20 @@ nav#TableOfContents > ul > li > ul > li > ul > li > ul > li > ul > li::before {
 nav#TableOfContents > ol > li > ol > li > ol > li > ol > li > ol {
   list-style-type: square; }
 
-:target {
+h1:target,
+h2:target,
+h3:target,
+h4:target,
+h5:target,
+h6:target {
   position: relative; }
 
-:target::before {
+h1:target::before,
+h2:target::before,
+h3:target::before,
+h4:target::before,
+h5:target::before,
+h6:target::before {
   content: '';
   background-image: url("/noun_Butterfly_1438108.svg");
   background-size: contain;
@@ -397,6 +407,11 @@ nav#TableOfContents > ol > li > ol > li > ol > li > ol > li > ol {
   top: 50%;
   transform: translateY(-50%); }
 
-li:target {
+li:target h1, li h1:target,
+li:target h2, li h2:target,
+li:target h3, li h3:target,
+li:target h4, li h4:target,
+li:target h5, li h5:target,
+li:target h6, li h6:target {
   /* prevent both butterfly icon and list style being shown overlapping */
   list-style-type: none; }
