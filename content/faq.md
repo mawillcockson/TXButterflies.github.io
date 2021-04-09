@@ -16,13 +16,23 @@ While volunteers are encouraged to take pictures, all butterflies within the 20 
 
 Volunteers should have a butterfly guide for their area that they can take along.  An iNaturalist account is helpful for IDing butterflies from pictures taken, but there is no need to access iNaturalist in the field while surveying.
 
+## When should I survey?
+
+Butterflies are most active on clear days between 10 am and 4 pm, when the temperature is above 70 F and there is little wind.  Depending on your location in Texas, monitoring can start as early as late February and go until late November south of I-10.  North of I-10, monitoring may start as late as mid April, and end early October.
+
+## How many people can monitor a route?
+
+At most two people should go along on a survey, the monitor and an optional scribe.  Only 1 person can observe butterflies.  Ideally the same person will observe butterflies on all surveys during a season.
+
 ## Do I need experience identifying butterflies before joining?
 
-No! While experience is helpful, volunteers learn about common as well as rarer species of butterflies as they survey their route. 
+No! While experience is helpful, volunteers learn about common as well as rarer species of butterflies as they survey their route.
+
 
 ## What is a route?
 
 A route is any consistent path that a person can go along at a slow pace.  Routes should include at least one 'natural' habitat.
+
 
 ## How long should a route be?
 
@@ -36,4 +46,23 @@ Each route must have at least 1 habitat and no more than 5.  Habitats may occur 
 
 Habitats are named by the route founder, the first person to establish the route.  Habitat names are not standardized, so monitors should choose descriptive names. In urban areas, 'roadside' is a common name.  Other common habitat names are prairie, savannah, neighborhood, woodland edge. Habitats along water may be named for example riparian, wetland, marsh, shoreline, depending on the exact habitat.  For wooded areas, including the dominant tree species in the name may be helpful.
 
-## 
+## I have a route in mind.  What's next?
+
+Follow the instructions to create a kml file using either Google Maps or Google Earth. Send pictures of the habitats along with the kml file.  Your route will be established in the website Pollardbase, and you will get an email notification when it is complete.  After your route has been established, you can enter your observations.
+
+
+## What about moths, caterpillars, coccoons, and dead butterflies?
+
+While all of these are interesting, volunteers record only live butterflies observed within 20 feet.  Observations about moths, caterpillars, coccoons and dead butterflies can be entered in the Notes section of both the paper form and Pollardbase. 
+
+## I did not see any butterflies along my route today.  What should I record?
+
+Every survey is important data!  If you observed no butterflies at all, use the "No butterflies observed"  species designation, and leave all numbers set to 0.
+
+## What should go in the Notes section?
+
+Notes can be used to record a number of environmental variables.  Examples include:  presence/absence of other people on the trail, status of vegetation (growing, blooming, recently mowed, installed new garden), other insects observed (moths, dragonflies), as well as butterflies observed outside the survey area.
+
+## What about pictures?
+
+Pictures are not required.  Howver, pictures can be uploaded with the survey results, provided they are a small enough file size.  More information is available in Pollardbase on the Pictures tab.
