@@ -498,3 +498,9 @@ li:target h6, li h6:target {
     /* prevent both butterfly icon and list style being shown overlapping */
     list-style-type: none;
 }
+
+.calendar {
+    width: 100%;
+    height: auto;
+    min-height: 23em;
+}
