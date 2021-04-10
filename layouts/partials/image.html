@@ -1,0 +1,24 @@
+{{ $e := "" -}}
+{{- $thisFilePath := "layouts/partials/image.html" }}
+{{- if not (isset . "ctx") -}}
+  {{- errorf `%s:5:1: 'ctx' missing from 'image' partial dict` $thisFilePath -}}
+{{- end -}}
+{{- if not (isset . "src") -}}
+  {{- errorf `%s:8:1: 'src' missing from 'image' partial` $thisFilePath -}}
+{{- end -}}
+{{- $ctx := .ctx -}}
+{{- $src := replaceRE `^/(.*)$` "$1" .src 1 -}}
+{{- $class := .class | or "" -}}
+{{- $alt := .alt | or "" -}}
+{{- $image := printf "images/%s" $src | resources.Get -}}
+{{- if not $image -}}
+  {{- errorf `%s: image '%s' not found` $ctx.Position $src -}}
+{{- else -}}
+{{- $breakPoints := slice "200" "600" "800" "1000" "1500" -}}
+<picture {{ with $class }}class="{{ . }}"{{ end }}>{{- $e -}}
+    {{- range $index, $breakPoint := $breakPoints -}}
+    <source srcset="{{- (printf `%sx%s` $breakPoint $breakPoint | $image.Fit).RelPermalink -}}" width="{{ $breakPoint }}" height="{{ $breakPoint }}" media="(max-width: {{ $breakPoint }}px)">{{- $e -}}
+    {{- end -}}
+    <img src="{{- $image.RelPermalink -}}" alt="{{- $alt -}}">{{- $e -}}
+</picture>{{- $e -}}
+{{- end }}
