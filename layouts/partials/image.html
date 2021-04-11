@@ -11,14 +11,29 @@
 {{- $class := .class | or "" -}}
 {{- $alt := .alt | or "" -}}
 {{- $image := printf "images/%s" $src | resources.Get -}}
+{{- $imageDetails := path.Join "assets" $image | imageConfig -}}
 {{- if not $image -}}
   {{- errorf `%s: image '%s' not found` $ctx.Position $src -}}
 {{- else -}}
-{{- $breakPoints := slice "400" "600" "800" "1000" "1500" "2000" "2500" "3000" -}}
+{{- $breakPoints := slice 400 600 800 1000 1500 2000 2500 3000 -}}
+{{- $largestDimensionIsWidth := gt $imageDetails.Width $imageDetails.Height -}}
+{{- $heightToWidth := float $imageDetails.Width | div $imageDetails.Height -}}
+{{- $widthToHeight := float $imageDetails.Height | div $imageDetails.Width -}}
 <picture {{ with $class }}class="{{ . }}"{{ end }}>{{- $e -}}
     {{- range $index, $breakPoint := $breakPoints -}}
-    <source srcset="{{- (printf `%sx%s` $breakPoint $breakPoint | $image.Fit).RelPermalink -}}" width="{{ $breakPoint }}" height="{{ $breakPoint }}" media="(max-width: {{ $breakPoint }}px)">{{- $e -}}
+      {{- $resizedImage := printf `%dx%d` $breakPoint $breakPoint | $image.Fit -}}
+      {{- $resizedDetails := path.Join "assets" $resizedImage | imageConfig -}}
+      {{- if $largestDimensionIsWidth -}}
+        {{- $ctx.Scratch.Set "width" $breakPoint -}}
+        {{- $ctx.Scratch.Set "height" ($heightToWidth | mul $breakPoint | math.Round) -}}
+      {{- else -}}
+        {{- $ctx.Scratch.Set "width" ($widthToHeight | mul $breakPoint | math.Round) -}}
+        {{- $ctx.Scratch.Set "height" $breakPoint -}}
+      {{- end -}}
+      {{- $resizedWidth := $ctx.Scratch.Get "width" -}}
+      {{- $resizedHeight := $ctx.Scratch.Get "height" -}}
+      <source srcset="{{- $resizedImage.RelPermalink -}}" width="{{ $resizedWidth }}" height="{{ $resizedHeight }}" media="(max-width: {{ $breakPoint }}px)" type="{{ $resizedImage.MediaType }}">{{- $e -}}
     {{- end -}}
-    <img src="{{- $image.RelPermalink -}}" alt="{{- $alt -}}">{{- $e -}}
+    <img src="{{- $image.RelPermalink -}}" alt="{{- $alt -}}" width="{{ $imageDetails.Width }}" height="{{ $imageDetails.Height }}">{{- $e -}}
 </picture>{{- $e -}}
 {{- end }}
