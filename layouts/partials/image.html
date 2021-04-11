@@ -17,23 +17,28 @@
 {{- else -}}
 {{- $breakPoints := slice 400 600 800 1000 1500 2000 2500 3000 -}}
 {{- $largestDimensionIsWidth := gt $imageDetails.Width $imageDetails.Height -}}
+{{- $largestDimension := cond $largestDimensionIsWidth $imageDetails.Width $imageDetails.Height -}}
 {{- $heightToWidth := float $imageDetails.Width | div $imageDetails.Height -}}
 {{- $widthToHeight := float $imageDetails.Height | div $imageDetails.Width -}}
 <picture {{ with $class }}class="{{ . }}"{{ end }}>{{- $e -}}
-    {{- range $index, $breakPoint := $breakPoints -}}
-      {{- $resizedImage := printf `%dx%d` $breakPoint $breakPoint | $image.Fit -}}
-      {{- $resizedDetails := path.Join "assets" $resizedImage | imageConfig -}}
-      {{- if $largestDimensionIsWidth -}}
-        {{- $ctx.Scratch.Set "width" $breakPoint -}}
-        {{- $ctx.Scratch.Set "height" ($heightToWidth | mul $breakPoint | math.Round) -}}
-      {{- else -}}
-        {{- $ctx.Scratch.Set "width" ($widthToHeight | mul $breakPoint | math.Round) -}}
-        {{- $ctx.Scratch.Set "height" $breakPoint -}}
+    <source srcset="
+      {{- range $index, $breakPoint := $breakPoints -}}
+        {{- $resizedImage := printf `%dx%d` $breakPoint $breakPoint | $image.Fit -}}
+        {{- $resizedDetails := path.Join `assets` $resizedImage | imageConfig -}}
+        {{- if $largestDimensionIsWidth -}}
+          {{- $ctx.Scratch.Set `width` $breakPoint -}}
+          {{- $ctx.Scratch.Set `height` ($heightToWidth | mul $breakPoint | math.Round | int) -}}
+        {{- else -}}
+          {{- $ctx.Scratch.Set `width` ($widthToHeight | mul $breakPoint | math.Round | int) -}}
+          {{- $ctx.Scratch.Set `height` $breakPoint -}}
+        {{- end -}}
+        {{- $resizedWidth := $ctx.Scratch.Get `width` -}}
+        {{- $resizedHeight := $ctx.Scratch.Get `height` -}}
+        {{- if gt $largestDimension $breakPoint -}}
+          {{- $resizedImage.RelPermalink }} {{ printf `%dw` $resizedWidth | safeHTMLAttr }}{{ `, `}}
+        {{- end -}}
       {{- end -}}
-      {{- $resizedWidth := $ctx.Scratch.Get "width" -}}
-      {{- $resizedHeight := $ctx.Scratch.Get "height" -}}
-      <source srcset="{{- $resizedImage.RelPermalink -}}" width="{{ $resizedWidth }}" height="{{ $resizedHeight }}" media="(max-width: {{ $breakPoint }}px)" type="{{ $resizedImage.MediaType }}">{{- $e -}}
-    {{- end -}}
-    <img src="{{- $image.RelPermalink -}}" alt="{{- $alt -}}" width="{{ $imageDetails.Width }}" height="{{ $imageDetails.Height }}">{{- $e -}}
+      " sizes="100vw" type="{{ $image.MediaType }}">{{- $e -}}
+    <img src="{{- ($image.Fit `400x400`).RelPermalink -}}" alt="{{- $alt -}}">{{- $e -}}
 </picture>{{- $e -}}
 {{- end }}
