@@ -1,0 +1,5 @@
+{{ if not (.Get 0) -}}
+  {{- errorf "Missing calendar id" -}}
+{{- end -}}
+{{- $id := .Get 0 -}}
+<iframe class="calendar" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=2&amp;bgcolor=%23ffffff&amp;ctz=America%2FChicago&amp;src={{ $id }}&amp;showTitle=0&amp;showDate=1&amp;mode=AGENDA&amp;showCalendars=0&amp;showTabs=0&amp;showPrint=1" width="800" height="600" frameborder="0" scrolling="no"></iframe>
