@@ -14,7 +14,7 @@
 {{- if not $image -}}
   {{- errorf `%s: image '%s' not found` $ctx.Position $src -}}
 {{- else -}}
-{{- $breakPoints := slice "200" "600" "800" "1000" "1500" -}}
+{{- $breakPoints := slice "400" "600" "800" "1000" "1500" "2000" "2500" "3000" -}}
 <picture {{ with $class }}class="{{ . }}"{{ end }}>{{- $e -}}
     {{- range $index, $breakPoint := $breakPoints -}}
     <source srcset="{{- (printf `%sx%s` $breakPoint $breakPoint | $image.Fit).RelPermalink -}}" width="{{ $breakPoint }}" height="{{ $breakPoint }}" media="(max-width: {{ $breakPoint }}px)">{{- $e -}}
