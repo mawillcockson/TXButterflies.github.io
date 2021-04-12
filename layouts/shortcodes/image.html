@@ -1,10 +1,12 @@
 {{- if not .IsNamedParams -}}
   {{- errorf `%s: the 'image' shortcode only takes named parameters (e.g. parameter=value)` .Position -}}
+{{- else -}}
+  {{- $alt := .Params.alt | or .Params.title | or .Params.text | or "" -}}
+  {{- $src := .Params.src | or .Params.file | or .Params.path -}}
+  {{- if not $src -}}
+    {{- errorf `%s: 'image' shortcode missing parameter 'src'` .Position -}}
+  {{- else -}}
+    {{- $class := .Params.side | or .Params.class | or .Params.classes | or "" -}}
+    {{ partial "image" (dict "ctx" . "src" $src "alt" $alt "class" $class) }}
+  {{- end -}}
 {{- end -}}
-{{- $alt := .Params.alt | or .Params.title | or .Params.text | or "" -}}
-{{- $src := .Params.src | or .Params.file | or .Params.path -}}
-{{- if not $src -}}
-  {{- errorf `%s: 'image' shortcode missing parameter 'src'` .Position -}}
-{{- end -}}
-{{- $class := .Params.side | or .Params.class | or .Params.classes | or "" -}}
-{{ partial "image" (dict "ctx" . "src" $src "alt" $alt "class" $class) }}
