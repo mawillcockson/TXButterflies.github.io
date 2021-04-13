@@ -15,7 +15,11 @@ https://github.com/theNewDynamic/gohugo-theme-ananke/blob/ffd9d903c905afef43fc1e
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage }}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
     {{ hugo.Generator }}
     <META NAME="ROBOTS" CONTENT="INDEX, FOLLOW">
-    <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    {{ if fileExists "static/sanitize.css" -}}
+      <link href="{{ `sanitize.css` | relURL | safeURL }}" rel="stylesheet">
+    {{ else -}}
+      <link href="https://unpkg.com/sanitize.css" rel="stylesheet">
+    {{- end }}
     {{ partial "css.html" (dict "currentPage" . "source" "style.scss" "targetPath" "style.css") }}
     <link rel="shortcut icon" href="{{ "/favicon.ico" | relURL | safeURL }}" type="image/x-icon">
   </head>
